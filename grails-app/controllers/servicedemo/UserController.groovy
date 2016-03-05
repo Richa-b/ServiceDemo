@@ -24,5 +24,18 @@ class UserController {
     }
 
 
+    def testPropagation(){
+        if(userService.testPropagation())
+            render "User Saved"
+        else
+            render("User Not Saved")
+    }
+
+
+    def testReadOnly(){
+        render userService.testReadOnly()
+    }
+
+
 
 }

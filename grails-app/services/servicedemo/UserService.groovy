@@ -11,6 +11,7 @@ import java.sql.SQLException
 @Transactional
 class UserService {
 
+    def testService
     def saveUser() {
 
         User user = new User(firstName:"Ram" , lastName : "Malhotra" , userId: "1")
@@ -25,6 +26,28 @@ class UserService {
     //@Transactional
     def dummyMethod() {
 
+    }
+
+
+    def testPropagation(){
+        User user = new User(firstName:"Neha" , lastName : "Malhotra" , userId: "1")
+        user.save()
+        try {
+            testService.saveAnotherUser()
+        }
+        catch (Exception exceptio) {
+            println("Catching Exception")
+        }
+        user
+    }
+
+
+    // this wont allow any write operation
+    @Transactional(readOnly = true)
+    def testReadOnly(){
+        User user = new User(firstName:"Neha" , lastName : "Malhotra" , userId: "1")
+        user.save()
+        user
     }
 
 }
