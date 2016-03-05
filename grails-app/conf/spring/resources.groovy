@@ -15,4 +15,8 @@ beans = {
 
     }
 
+    customBean1(com.demo.CustomBean, "Rahul") { bean ->
+
+    }
+
 }
