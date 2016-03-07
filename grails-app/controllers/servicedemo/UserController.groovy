@@ -9,6 +9,7 @@ class UserController {
     def userService
 
 
+    // Bad Practice .. Never perform business logic task in Controller
     def index() {
 
         User user = new User(firstName:"Ram" , lastName : "Malhotra" , userId: "1")

@@ -29,8 +29,9 @@ class UserService {
     }
 
 
+    //To verify how propagation works from one transaction to another
     def testPropagation(){
-        User user = new User(firstName:"Neha" , lastName : "Malhotra" , userId: "1")
+        User user = new User(firstName:"Neha" , lastName : "Malhotra" )
         user.save()
         try {
             testService.saveAnotherUser()
@@ -45,7 +46,7 @@ class UserService {
     // this wont allow any write operation
     @Transactional(readOnly = true)
     def testReadOnly(){
-        User user = new User(firstName:"Neha" , lastName : "Malhotra" , userId: "1")
+        User user = new User(firstName:"Neha" , lastName : "Malhotra" )
         user.save()
         user
     }
